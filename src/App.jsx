@@ -1,5 +1,5 @@
 import { useMemo, useState } from 'react'
-import Header from './components/Header'
+import Hero from './components/Hero'
 import UploadArea from './components/UploadArea'
 import ThemePicker from './components/ThemePicker'
 import ResultPreview from './components/ResultPreview'
@@ -8,8 +8,9 @@ function App() {
   const [file, setFile] = useState(null)
   const [previewUrl, setPreviewUrl] = useState('')
   const [processedUrl, setProcessedUrl] = useState('')
-  const [theme, setTheme] = useState('light')
+  const [theme, setTheme] = useState('cyber')
   const [processing, setProcessing] = useState(false)
+
   const API_BASE = useMemo(() => {
     const env = import.meta.env.VITE_BACKEND_URL
     return env && env.length > 0 ? env : 'http://localhost:8000'
@@ -52,13 +53,15 @@ function App() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-indigo-50 via-blue-50 to-sky-50">
-      <Header />
-      <main className="max-w-5xl mx-auto px-4 pb-16 space-y-6">
+    <div className="min-h-screen bg-[#0b0c10] text-white">
+      <Hero />
+      <main className="max-w-6xl mx-auto px-4 pb-20 -mt-10 space-y-6">
         <UploadArea file={file} setFile={setFile} previewUrl={previewUrl} setPreviewUrl={setPreviewUrl} />
         <ThemePicker theme={theme} setTheme={setTheme} processing={processing} onProcess={onProcess} />
         <ResultPreview processedUrl={processedUrl} onDownload={onDownload} />
-        <p className="text-center text-xs text-gray-500">Prototype build: runs OCR server-side and rebuilds the image with your selected theme.</p>
+        <p className="text-center text-xs text-white/60">
+          Prototype build: mask-based text extraction, regenerated onto your selected theme.
+        </p>
       </main>
     </div>
   )
