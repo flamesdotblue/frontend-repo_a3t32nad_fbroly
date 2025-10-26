@@ -9,7 +9,7 @@ export default function Header() {
         </div>
         <div>
           <h1 className="text-xl sm:text-2xl font-bold tracking-tight text-gray-900">
-            Slip Cleaner – OCR + Themed Rebuild
+            Slip cleaner
           </h1>
           <p className="text-sm text-gray-600">
             Upload a slip image, extract the text, and regenerate it on a clean branded background.
